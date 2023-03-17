@@ -9,8 +9,9 @@ big_text = "Португальский дворянин Магеллан пос�
 word_list = big_text.lower().split(" ")
 
 word_counts = dict()
+punctuations = "".join(punctuation_marks)
 for word in word_list:
-    clean_word = word.strip("".join(punctuation_marks))
+    clean_word = word.strip(punctuations)
     if clean_word != "":
         word_counts[clean_word] = word_counts.setdefault(clean_word, 0) + 1
 
