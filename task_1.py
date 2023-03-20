@@ -14,7 +14,7 @@ def print_matrix(matrix: list[list[int | float]]) -> None:
 
 def transpose(matrix: list[list[int | float]]) -> list[list[int | float]]:
     '''
-    Возвращает трансонированную матрицу
+    Возвращает транспонированную матрицу
     '''
     return [[matrix[row][col] for row in range(len(matrix))] for col in range(len(matrix[0]))]
 
