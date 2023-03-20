@@ -130,6 +130,29 @@ def withdraw() -> decimal.Decimal:
         return withdraw_amount
 
 
+def do_deposit(total_amount: decimal.Decimal) -> decimal.Decimal:
+    '''
+    Возвращает общую сумму начисления с учетом процентов и налога
+    '''
+    wealth_tax = deduct_wealth_tax(total_amount)
+    oper_amount = deposit()
+    gift_interest = charge_gift_interest(Operation.DEPOSIT)
+
+    return oper_amount + gift_interest - wealth_tax
+
+
+def do_withdraw(total_amount: decimal.Decimal) -> decimal.Decimal:
+    '''
+    Возвращает общую сумму снятия с учетом процентов и налога
+    '''
+    wealth_tax = deduct_wealth_tax(total_amount)
+    oper_amount = withdraw()
+    interest_amount = charge_withdraw_interest(oper_amount)
+    gift_interest = charge_gift_interest(Operation.DEPOSIT)
+
+    return oper_amount + wealth_tax + interest_amount - gift_interest
+
+
 def main():
     '''
     Основной цикл работы
@@ -139,15 +162,9 @@ def main():
         operation = show_menu()
         match operation:
             case Operation.DEPOSIT:
-                total_amount -= deduct_wealth_tax(total_amount)
-                total_amount += deposit()
-                total_amount += charge_gift_interest(Operation.DEPOSIT)
+                total_amount += do_deposit(total_amount)
             case Operation.WITHDRAW:
-                total_amount -= deduct_wealth_tax(total_amount)
-                withdraw_amount = withdraw()
-                interest = charge_withdraw_interest(withdraw_amount)
-                total_amount -= withdraw_amount + interest
-                total_amount += charge_gift_interest(Operation.WITHDRAW)
+                total_amount -= do_withdraw(total_amount)
             case Operation.EXIT:
                 print("Выход...")
                 break
