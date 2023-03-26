@@ -1,3 +1,5 @@
+from sys import argv
+
 '''
 Содержит функции для проверки коррекиности даты в диапазоне лет [1, 9999]
 '''
@@ -5,7 +7,7 @@ __all__ = ['check_date']
 
 __LOW_LIMIT_YEAR = 1
 __UPPER_LIMIT_YEAR = 9999
-
+__DEFAULT_DATE = "01.01.01"
 
 __month_days_31 = {1, 3, 5, 7, 8, 10, 12}
 __month_days_30 = {2, 4, 6, 9, 11}
@@ -21,7 +23,7 @@ def __is_leep_year(year: int) -> bool:
 
 def check_date(date: str) -> bool:
     '''
-    Проверяет, является ли дата, заданная в формате "dd.mm.yyyy", корректной
+    Проверяет, существует ли дата, заданная в формате "dd.mm.yyyy"
     '''
     day, month, year = map(int, date.split('.'))
 
@@ -41,5 +43,5 @@ def check_date(date: str) -> bool:
 
 
 if __name__ == '__main__':
-    date = "28.02.2022"
+    date = argv[1] if len(argv) > 1 else __DEFAULT_DATE
     print(check_date(date))
