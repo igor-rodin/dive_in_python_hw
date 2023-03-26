@@ -12,12 +12,12 @@ def gen_queens_position(queen_count: int) -> tuple[(int, int)]:
     Генерирует случаюную расстановку queen_count ферзей на доске
     '''
     pos = []
-    prev_row = None
+    used_row = []
     for _ in range(queen_count):
         cur_row = random.randrange(1, queen_count + 1)
-        while cur_row == prev_row:
+        while cur_row in used_row:
             cur_row = random.randrange(1, queen_count + 1)
-        prev_row = cur_row
+        used_row.append(cur_row)
         cur_col = random.randrange(1, queen_count + 1)
         pos.append((cur_row, cur_col))
 
@@ -56,5 +56,6 @@ def check_bit_queen(positions: tuple((int, int))) -> bool:
 
 
 if __name__ == '__main__':
-    position = ((1, 2), (2, 3), (3, 4))
-    print(check_bit_queen(position))
+    position = gen_queens_position(4)
+    print(f"{position=}")
+    print(f"{check_bit_queen(position)=}")
