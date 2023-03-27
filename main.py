@@ -8,7 +8,7 @@ print(f"Дата {date} существует.") if dt.check_date(
     date) else print(f"Дата {date} не существует.")
 
 # Task 2, 3
-QUEENS_COUNT = 7
+QUEENS_COUNT = 8
 GOOD_POSITION_COUNT = 4
 
 good_pos = set()
