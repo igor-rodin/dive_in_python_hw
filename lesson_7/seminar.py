@@ -181,7 +181,7 @@ def gen_files_to_dir(exts: dict[str, int], target_dir: str = '') -> None:
 # ✔ В исходной папке должны остаться только те файлы, которые не подошли для сортировки.
 
 
-def group_files(source_dir: str = '') -> None:
+def group_files_by_ext(source_dir: str = '') -> None:
     '''
     Группирует файлы по категориям внутри source_dir.
     source_dir - абсолютный путь
