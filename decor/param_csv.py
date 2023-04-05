@@ -16,6 +16,5 @@ def csv_params(csv_file: str = CSV_FILE) -> Callable:
             for param in params:
                 res = func(*param)
                 result.append(res)
-            print(f'{result=}')
         return wrapper
     return decor
