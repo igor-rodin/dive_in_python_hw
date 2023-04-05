@@ -2,9 +2,9 @@
 
 __all__ = ['solve_quad', 'gen_params_csv']
 
-from random import uniform
 from typing import Any
-import serialize.s_csv as s_csv
+from decor.param_csv import csv_params
+from decor.log_json import log_json
 
 
 def _desc(a: float | int, b: float | int, c: float | int) -> float:
@@ -19,21 +19,8 @@ def _valid(a: Any) -> bool:
     return type(a) == int or type(a) == float
 
 
-def gen_params_csv(file_csv: str = 'params.csv', count=10, min_val=-5, max_val=5) -> None:
-    '''
-    Генерирует параметры квадратного уравнения и записывает в csv файл
-    '''
-    data = []
-    for _ in range(count):
-        params = {}
-        params['a'] = uniform(min_val, max_val)
-        params['b'] = uniform(min_val, max_val)
-        params['c'] = uniform(min_val, max_val)
-        data.append(params)
-
-    s_csv.write_ld_csv(data, file_csv)
-
-
+@csv_params()
+@log_json(preaty_print=False)
 def solve_quad(* args) -> tuple[float | complex, float | complex] | float | None:
     '''
     Находит корни кавдратного уравнения a * x^2 + b * x + c = 0
@@ -65,8 +52,4 @@ def solve_quad(* args) -> tuple[float | complex, float | complex] | float | None
 
 
 if __name__ == '__main__':
-    params = [1., 0., -1]
-    gen_params_csv()
-    roots = solve_quad(*params)
-
-    print(f'{roots= }')
+    solve_quad()
