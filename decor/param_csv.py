@@ -14,7 +14,6 @@ def csv_params(csv_file: str = CSV_FILE) -> Callable:
 
         def wrapper() -> Any:
             for param in params:
-                res = func(*param)
-                result.append(res)
+                result.append(func(*param))
         return wrapper
     return decor
