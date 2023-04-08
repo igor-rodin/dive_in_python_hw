@@ -14,19 +14,19 @@ class Serializer:
     Базовый класс 
     '''
     FILE_TYPE: FileType = None
+    DEFAULT_FILE_NAME = 'unnamed'
 
-    def __init__(self, file_name: str) -> None:
-        self._file_name = '.'.join(
-            (file_name, self.FILE_TYPE.name.lower())) if Path(file_name).suffix == '' else file_name
-
-    def serialize(self, data: Any) -> None:
+    def serialize(self, data: Any, file_name: str) -> None:
         '''
         Сериализует данные data в файл file_name
         '''
-        pass
+        if not file_name:
+            file_name = self.DEFAULT_FILE_NAME
+        self._file_name = '.'.join(
+            (file_name, self.FILE_TYPE.name.lower())) if Path(file_name).suffix == '' else file_name
 
-    def deserialize(self) -> Any:
+    def deserialize(self, file: str) -> Any:
         '''
-        Десериализует данные из файла file_name
+        Десериализует данные из файла file
         '''
         pass
