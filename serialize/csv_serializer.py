@@ -26,7 +26,7 @@ class CsvSerializer(Serializer):
         '''
         Записывает в csv_file список с произвольными данными 
         '''
-        if not isinstance(data, list) == list:
+        if not isinstance(data, list):
             data = [data]
 
         with open(self._file_name, mode='w', newline='', encoding='utf-8') as f_csv:
