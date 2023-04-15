@@ -54,17 +54,11 @@ class FactorialRange:
     def __init__(self, *args) -> None:
         match args:
             case (stop, ):
-                self.start = 1
-                self.stop = stop
-                self.step = 1
+                self.start, self.stop, self.step = 1, stop, 1
             case (start, stop):
-                self.start = start
-                self.stop = stop
-                self.step = 1
+                self.start, self.stop, self.step = start, stop, 1
             case (start, stop, step):
-                self.start = start
-                self.stop = stop
-                self.step = step
+                self.start, self.stop, self.step = start, stop, step
 
     @staticmethod
     def _fac(n: int) -> int:
