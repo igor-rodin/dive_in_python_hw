@@ -1,1 +1,1 @@
-__all__ = ["matr_exeption"]
+__all__ = ["rect_exception", "matr_exeption"]

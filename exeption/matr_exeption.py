@@ -1,3 +1,11 @@
+__all__ = [
+    "NotValidDataDimensionExeption",
+    "ArithmeticMatrixExeptions",
+    "AddOperMatrixExeption",
+    "MulOperMatrixExeption",
+]
+
+
 class BaseMatrixExeption(Exception):
     """Базовое исключение при работе с Matrix"""
 

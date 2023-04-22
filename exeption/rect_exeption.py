@@ -1,3 +1,6 @@
+__all__ = ["NegativeRectSizeExeption"]
+
+
 class NegativeRectSizeExeption(Exception):
     """Исключение выбрасывается при попвтке создать прямоугольник с отрицательными размерами"""
 
