@@ -9,3 +9,4 @@ data/
 *.json
 *.csv
 *.pickle
+!requirements.txt
