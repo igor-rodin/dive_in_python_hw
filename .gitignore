@@ -4,6 +4,7 @@ tmp/
 .vscode/
 venv/
 data/
+*.log
 *.txt
 *.json
 *.csv
