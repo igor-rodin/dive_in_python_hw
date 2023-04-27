@@ -1,8 +1,8 @@
 import logging
 
 
-def init_loggin(name: str, log_file: str = "dir_stat.log") -> logging.Logger:
-    FORMAT = "{levelname:<6} - {asctime}. {msg}"
+def init_logging(name: str, log_file: str = "dir_stat.log") -> logging.Logger:
+    FORMAT = "{levelname:<5}:{name}:{asctime}:{msg}"
     logger = logging.getLogger(name)
     logger.setLevel(logging.INFO)
     file_handler = logging.FileHandler(filename=log_file)

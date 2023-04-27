@@ -4,7 +4,7 @@ import serialize.s_json as s_json
 import serialize.s_csv as s_csv
 import serialize.s_pickle as s_pickle
 import argparse
-from mylog import init_loggin
+from mylog import init_logging
 
 
 class FileType(Enum):
@@ -50,7 +50,7 @@ def get_dir_stat(dir: str = "", file_type: FileType = FileType.NONE) -> None:
     результат в файлы формата json, csv, pickle. Имя файла совпадает с именеи директории dir
     """
 
-    logger = init_loggin("dir_stat")
+    logger = init_logging("dir_stat")
 
     dir = dir or Path.cwd()
 
